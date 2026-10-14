@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=75,<81"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "music-genre-identifier"
+version = "0.1.0"
+description = "Identify music genres in WAV and MP3 files with a pretrained audio model."
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+dynamic = ["dependencies"]
+
+[project.scripts]
+music-genre = "music_genre.cli:main"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements-package.txt"]}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+music_genre = ["static/*.html"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
